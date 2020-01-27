@@ -30,8 +30,6 @@ namespace RevoltSampleWebApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<Models.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddDefaultIdentity<Models.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
@@ -52,7 +50,12 @@ namespace RevoltSampleWebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            Models.DefaultUsers.SeedUsers(userManager);
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
+            }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -67,6 +70,7 @@ namespace RevoltSampleWebApp
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+            Models.DefaultUsers.SeedUsers(userManager);
         }
     }
 }
