@@ -16,7 +16,7 @@ namespace RevoltSampleWebApp.Models
             WebClient client = new WebClient();
             // API Key needs to be updated every day!!!
             // https://random-word-api.herokuapp.com/key
-            string rawJSON = client.DownloadString("https://random-word-api.herokuapp.com/word?key=G7QVILJF&number=" + count.ToString());
+            string rawJSON = client.DownloadString("https://random-word-api.herokuapp.com/word?key=AOGK5ECH&number=" + count.ToString());
 
             // Clearing JSON file
             rawJSON = rawJSON.Trim('[', ']');
