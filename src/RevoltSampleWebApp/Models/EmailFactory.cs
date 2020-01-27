@@ -1,37 +1,65 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Net.Mail;
 
 
 namespace RevoltSampleWebApp.Models
 {
     public class EmailFactory
     {
-
-        SmtpClient smtpClient;
+        SmtpClient mySmtpClient;
 
         public EmailFactory()
         {
-            smtpClient = new SmtpClient("smtp.forpsi.com", 465);
+            mySmtpClient = new SmtpClient("smtp.seznam.cz", 25);
+            mySmtpClient.EnableSsl = false;
 
-            smtpClient.Credentials = new System.Net.NetworkCredential("revolt_test@flex-cast.cz", "Revolt123");
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtpClient.EnableSsl = true;
+            // set smtp-client with basicAuthentication
+            mySmtpClient.UseDefaultCredentials = false;
+            System.Net.NetworkCredential basicAuthenticationInfo = new
+               System.Net.NetworkCredential("revolttest@seznam.cz", "testrevolt123");
+            mySmtpClient.Credentials = basicAuthenticationInfo;
         }
 
         private string CreateHtmlMessage(string ID1, string ID2)
         {
-            return "<a href=\"https://localhost/newpage/" + ID1 + "/" + ID2 + "\" >LINK</a>" ;
+            return "<a href=\"https://localhost:44369/newpage/" + ID1 + "/" + ID2 + "\" >LINK</a>" ;
         }
 
         public void SendEmail(string recipeint, string ID1, string ID2)
         {
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("revolt_test@flex-cast.cz", "RevoltTestWebsiteMailBot");
-            mail.To.Add(new MailAddress(recipeint));
-            mail.Subject = "RevoltTestEmail";
-            mail.Body = CreateHtmlMessage(ID1, ID2);
+            try
+            {
+                // add from,to mailaddresses
+                MailAddress from = new MailAddress("revolttest@seznam.cz", "RevoltTest");
+                MailAddress to = new MailAddress(recipeint, "Revolt account name");
+                MailMessage myMail = new System.Net.Mail.MailMessage(from, to);
 
-            smtpClient.Send(mail);
+                // add ReplyTo
+                MailAddress replyTo = new MailAddress("revolttest@seznam.cz");
+                myMail.ReplyToList.Add(replyTo);
+
+                // set subject and encoding
+                myMail.Subject = "RevoltTest - Link message";
+                myMail.SubjectEncoding = System.Text.Encoding.UTF8;
+
+                // set body-message and encoding
+                myMail.Body = CreateHtmlMessage(ID1, ID2);
+                myMail.BodyEncoding = System.Text.Encoding.UTF8;
+                // text or html
+                myMail.IsBodyHtml = true;
+
+                mySmtpClient.Send(myMail);
+            }
+
+            catch (SmtpException ex)
+            {
+                throw new ApplicationException("SmtpException has occured: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
     }
