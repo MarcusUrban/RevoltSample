@@ -241,40 +241,6 @@ namespace RevoltSampleWebApp.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "6c80fe71-55df-4177-960d-82ad984e4824",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a264943e-6008-4884-ae60-9c92ea27cae6",
-                            Email = "admin@testing.cz",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@TESTING.CZ",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDDiGOGtRm29t7eQm9ezhMbNkasl3zs3nBLmsQroAKapXMh1Kp/9J2jqqTaLAWr2bA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "19f34311-8c8a-4581-b337-5cafc7cb3b53",
-                            TwoFactorEnabled = false,
-                            UserName = "Admin"
-                        },
-                        new
-                        {
-                            Id = "22073247-a532-496f-9785-abfc6912bcf1",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "31066525-b921-4503-adb3-3604568cffd0",
-                            Email = "manager@testing.cz",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "MANAGER@TESTING.CZ",
-                            NormalizedUserName = "MANAGER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGUnea0vUvwu4z9shavylr6IglOOf8IowY4FeZ9j50MoJeJYOpRgjBDZpRTpT1sZAA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "c9729723-904b-4546-b1d4-226736b9fd75",
-                            TwoFactorEnabled = false,
-                            UserName = "Manager"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

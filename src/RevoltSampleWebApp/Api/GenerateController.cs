@@ -19,7 +19,6 @@ namespace RevoltSampleWebApp.Api
         {
             this.userManager = userManager;
             this.randomWordFactory = new Models.RandomWordFactory();
-
         }
         // GET: api/Generate
         [HttpGet]

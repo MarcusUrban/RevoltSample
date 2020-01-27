@@ -27,20 +27,19 @@ namespace RevoltSampleWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<Models.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //services.AddDefaultIdentity<Models.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<Models.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.AddRazorPages();
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<Models.ApplicationUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -53,6 +52,7 @@ namespace RevoltSampleWebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            Models.DefaultUsers.SeedUsers(userManager);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

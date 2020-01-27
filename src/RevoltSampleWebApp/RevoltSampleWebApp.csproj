@@ -12,6 +12,8 @@
     <Compile Remove="Data\Migrations\20200127071511_CreatingActivityTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20200127074840_CreateActivitiesTable.cs" />
     <Compile Remove="Data\Migrations\20200127074840_CreateActivitiesTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200127105831_SeedUserData.cs" />
+    <Compile Remove="Data\Migrations\20200127105831_SeedUserData.Designer.cs" />
   </ItemGroup>
 
 
