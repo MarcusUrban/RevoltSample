@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RevoltSampleWebApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<Models.ApplicationUser>
     {
         public DbSet<Models.Activity> Activities { get; set; }
 
