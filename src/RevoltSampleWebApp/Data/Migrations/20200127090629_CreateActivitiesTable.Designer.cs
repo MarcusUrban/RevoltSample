@@ -10,7 +10,7 @@ using RevoltSampleWebApp.Data;
 namespace RevoltSampleWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200127074840_CreateActivitiesTable")]
+    [Migration("20200127090629_CreateActivitiesTable")]
     partial class CreateActivitiesTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -164,8 +164,8 @@ namespace RevoltSampleWebApp.Data.Migrations
                     b.Property<string>("ApplicationUserID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Timestamp")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ActivityId");
 

@@ -10,6 +10,8 @@
     <Compile Remove="Data\Migrations\20200127065915_InitialDbState.Designer.cs" />
     <Compile Remove="Data\Migrations\20200127071511_CreatingActivityTable.cs" />
     <Compile Remove="Data\Migrations\20200127071511_CreatingActivityTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200127074840_CreateActivitiesTable.cs" />
+    <Compile Remove="Data\Migrations\20200127074840_CreateActivitiesTable.Designer.cs" />
   </ItemGroup>
 
 

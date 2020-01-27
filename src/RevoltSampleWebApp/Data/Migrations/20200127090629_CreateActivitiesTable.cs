@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RevoltSampleWebApp.Data.Migrations
 {
@@ -21,7 +22,7 @@ namespace RevoltSampleWebApp.Data.Migrations
                 columns: table => new
                 {
                     ActivityId = table.Column<string>(nullable: false),
-                    Timestamp = table.Column<int>(nullable: false),
+                    Timestamp = table.Column<DateTime>(nullable: false),
                     ApplicationUserID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
