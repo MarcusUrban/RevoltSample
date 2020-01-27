@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevoltSampleWebApp", "RevoltSampleWebApp\RevoltSampleWebApp.csproj", "{3188E171-17D8-4063-849B-D37CF4F61FAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3188E171-17D8-4063-849B-D37CF4F61FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3188E171-17D8-4063-849B-D37CF4F61FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3188E171-17D8-4063-849B-D37CF4F61FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3188E171-17D8-4063-849B-D37CF4F61FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9E0DA69-ED57-481D-82AE-C59034D5E6AE}
+	EndGlobalSection
+EndGlobal
